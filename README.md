@@ -1,1 +1,172 @@
-# AI_Powered-Laptop-Recomended-system
+Here's a well-structured `README.md` file tailored for your GitHub project. This README explains what your AI-powered e-commerce assistant does, how to install it, and how to run it end-to-end, from scraping Flipkart laptop data to interacting via a terminal-based intelligent assistant.
+
+---
+
+# 🛒 AI-Powered Laptop Recommendation Assistant (Flipkart Scraper + RAG + Ollama)
+
+This is a terminal-based AI-powered product assistant that scrapes **laptop data from Flipkart**, builds a **vector store using FAISS**, and enables **conversational product recommendations** using **LLMs (LLaMA3 via Ollama)**. It supports **dynamic filtering** based on user inputs like price and RAM, maintains **conversational memory**, and handles **follow-up questions** on selected products.
+
+---
+
+## 📌 Features
+
+* ✅ Scrapes real-time laptop listings from Flipkart using `BeautifulSoup`
+* ✅ Extracts product name, price, description, and rating
+* ✅ Converts CSV data into FAISS vector embeddings using HuggingFace
+* ✅ Filters results based on price range (`under ₹50000`, `between ₹60000 and ₹70000`, etc.)
+* ✅ RAM filtering (e.g., `at least 8GB RAM`)
+* ✅ Provides top 2 AI-generated product recommendations
+* ✅ Logs user clicks for behavior analysis
+* ✅ Supports intelligent follow-up questions
+* ✅ Uses conversational memory (`BufferMemory`) for context-aware interactions
+
+---
+
+## 🧠 Tech Stack
+
+* Python
+* LangChain
+* FAISS
+* HuggingFace Embeddings (`all-MiniLM-L6-v2`)
+* Ollama (LLaMA3)
+* BeautifulSoup
+* Pandas
+
+---
+
+## 📁 Folder Structure
+
+```
+.
+├── flipkart_scraper.py            # Scrapes laptop data and saves to CSV
+├── build_faiss_index.py           # Loads CSV, builds FAISS vector store
+├── assistant_terminal.py          # Main CLI assistant with RAG + filters
+├── data/
+│   └── cleaned_laptops_data.csv   # Scraped data
+├── faiss_index/                   # Saved FAISS index
+├── user_behavior_log.csv          # Click tracking
+└── README.md                      # This file
+```
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the Repo
+
+```bash
+git clone https://github.com/yourusername/flipkart-laptop-assistant.git
+cd flipkart-laptop-assistant
+```
+
+### 2. Install Dependencies
+
+Use `pip` and create a virtual environment:
+
+```bash
+pip install -r requirements.txt
+```
+
+**Example `requirements.txt`:**
+
+```
+pandas
+requests
+beautifulsoup4
+lxml
+langchain
+faiss-cpu
+sentence-transformers
+ollama
+```
+
+> ⚠️ Install Ollama and run a local LLaMA3 model:
+
+```bash
+ollama run llama3
+```
+
+---
+
+## 🚀 How to Run
+
+### Step 1: Scrape Flipkart Laptop Listings
+
+```bash
+python flipkart_scraper.py
+```
+
+This will save a CSV file (`flipkart_data.csv`) with product details.
+
+---
+
+### Step 2: Build FAISS Vector Index
+
+```bash
+python build_faiss_index.py
+```
+
+This converts the CSV into document chunks and stores embeddings in a local FAISS index.
+
+---
+
+### Step 3: Launch the Terminal Assistant
+
+```bash
+python assistant_terminal.py
+```
+
+You’ll be prompted to enter queries like:
+
+```
+📝 Your query: laptops under ₹50000 with at least 8GB RAM
+```
+
+You'll get AI-curated recommendations and can interact via follow-up questions like:
+
+```
+🤖 How is the battery backup of the second one?
+```
+
+---
+
+## 🧠 Example Queries
+
+* `"laptops under ₹50000 with SSD"`
+* `"between ₹60000 and ₹80000 with 16GB RAM"`
+* `"best laptop for programming and ML"`
+* `"which one has better display?"` *(as a follow-up)*
+
+---
+
+## 📊 Click Tracking
+
+User selections are logged in `user_behavior_log.csv` with the original query and product clicked.
+
+---
+
+## 🛠 Future Improvements
+
+* Integrate image previews in GUI (e.g., Streamlit)
+* Add filters for CPU/GPU/brand
+* Enable feedback loop for learning preferences
+* Store chat memory persistently
+
+---
+
+## 🙌 Credits
+
+* Built with [LangChain](https://www.langchain.com/)
+* Embeddings by [HuggingFace Sentence Transformers](https://huggingface.co/sentence-transformers)
+* Local LLM via [Ollama](https://ollama.ai/)
+* Data scraped from [Flipkart](https://www.flipkart.com/)
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+Let me know if you want me to generate the `requirements.txt` file as well.
