@@ -33,14 +33,7 @@ This is a terminal-based AI-powered product assistant that scrapes **laptop data
 
 ## ⚙️ Setup Instructions
 
-### 1. Clone the Repo
-
-```bash
-git clone https://github.com/yourusername/flipkart-laptop-assistant.git
-cd flipkart-laptop-assistant
-```
-
-### 2. Install Dependencies
+### . Install Dependencies
 
 Use `pip` and create a virtual environment:
 
