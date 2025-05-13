@@ -28,21 +28,6 @@ This is a terminal-based AI-powered product assistant that scrapes **laptop data
 * BeautifulSoup
 * Pandas
 
----
-
-## 📁 Folder Structure
-
-```
-.
-├── flipkart_scraper.py            # Scrapes laptop data and saves to CSV
-├── build_faiss_index.py           # Loads CSV, builds FAISS vector store
-├── assistant_terminal.py          # Main CLI assistant with RAG + filters
-├── data/
-│   └── cleaned_laptops_data.csv   # Scraped data
-├── faiss_index/                   # Saved FAISS index
-├── user_behavior_log.csv          # Click tracking
-└── README.md                      # This file
-```
 
 ---
 
