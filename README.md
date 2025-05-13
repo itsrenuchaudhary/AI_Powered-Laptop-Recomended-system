@@ -1,7 +1,3 @@
-Here's a well-structured `README.md` file tailored for your GitHub project. This README explains what your AI-powered e-commerce assistant does, how to install it, and how to run it end-to-end, from scraping Flipkart laptop data to interacting via a terminal-based intelligent assistant.
-
----
-
 # 🛒 AI-Powered Laptop Recommendation Assistant (Flipkart Scraper + RAG + Ollama)
 
 This is a terminal-based AI-powered product assistant that scrapes **laptop data from Flipkart**, builds a **vector store using FAISS**, and enables **conversational product recommendations** using **LLMs (LLaMA3 via Ollama)**. It supports **dynamic filtering** based on user inputs like price and RAM, maintains **conversational memory**, and handles **follow-up questions** on selected products.
