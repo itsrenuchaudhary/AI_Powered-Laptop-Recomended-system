@@ -61,35 +61,6 @@ ollama run llama3
 ```
 
 ---
-
-## 🚀 How to Run
-
-### Step 1: Scrape Flipkart Laptop Listings
-
-```bash
-python flipkart_scraper.py
-```
-
-This will save a CSV file (`flipkart_data.csv`) with product details.
-
----
-
-### Step 2: Build FAISS Vector Index
-
-```bash
-python build_faiss_index.py
-```
-
-This converts the CSV into document chunks and stores embeddings in a local FAISS index.
-
----
-
-### Step 3: Launch the Terminal Assistant
-
-```bash
-python assistant_terminal.py
-```
-
 You’ll be prompted to enter queries like:
 
 ```
@@ -135,12 +106,3 @@ User selections are logged in `user_behavior_log.csv` with the original query an
 * Local LLM via [Ollama](https://ollama.ai/)
 * Data scraped from [Flipkart](https://www.flipkart.com/)
 
----
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
----
-
-Let me know if you want me to generate the `requirements.txt` file as well.
