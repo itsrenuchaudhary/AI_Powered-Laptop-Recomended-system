@@ -1,130 +1,139 @@
-Here’s a **README.md** file tailored for your AI-powered laptop recommendation assistant, complete with usage instructions, setup, features, and acknowledgments:
-
----
-
-```markdown
 # 💻 AI Laptop Recommendation Assistant
 
-An AI-powered conversational assistant that helps users find the best laptops based on their requirements such as price, RAM, and usage needs (e.g., gaming, office work). It supports follow-up questions and remembers previous context for a personalized experience.
+An intelligent AI-powered assistant that helps users find the best laptops based on their needs, budget, and preferences. This system uses LangChain, FAISS, HuggingFace embeddings, and Ollama (LLaMA3) to deliver contextual, relevant, and personalized recommendations through a Gradio interface.
+
+---
 
 ## 🔍 Features
 
-- Conversational product search assistant for laptops
-- Filters by price (under, above, between ranges) and RAM
-- Retrieves relevant products using semantic search (FAISS + HuggingFace embeddings)
-- Follow-up question support with contextual awareness
-- Dual interface: Structured form (Gradio Blocks) and conversational chatbot (Gradio Chatbot)
-- Local language model support via Ollama (LLaMA3)
-- Memory-enabled dialogue using LangChain
+* Conversational product search for laptops
+* Filters results by price range and RAM from user queries
+* Retrieves laptops using a RAG pipeline (FAISS + LLM)
+* Supports intelligent follow-up questions
+* Keeps conversational memory across interactions
+* Clean and structured product recommendations
+* Available in both standard and chatbot UI (Gradio)
 
 ---
 
-## 🛠️ Technologies Used
+## 🧠 Technologies Used
 
-- **LangChain**: Conversational chains, memory, and vector store integrations
-- **FAISS**: Fast vector search for similarity-based document retrieval
-- **HuggingFace Embeddings**: For semantic similarity
-- **Gradio**: User-friendly front-end interface
-- **Ollama**: To serve local LLMs like `llama3`
-- **Pandas & CSVLoader**: For ingesting and processing laptop data
+* Python
+* LangChain (chains, retrievers, memory, etc.)
+* HuggingFace Embeddings (`sentence-transformers/all-MiniLM-L6-v2`)
+* FAISS (vector database for semantic search)
+* Ollama (serving LLaMA3 locally)
+* Gradio (UI interface)
+* Pandas (for CSV processing)
+* Regular Expressions (for filtering logic)
 
 ---
 
-## 📦 Folder Structure
+## 🗂 Project Structure
 
 ```
-
-.
 ├── data/
-│   └── cleaned\_laptops\_data.csv         # Laptop dataset
-├── faiss\_index/                         # Saved FAISS vector index
-├── connect\_with\_llm.py                 # Core logic: loading, filtering, chains
-├── main\_app.py                         # Chatbot-based Gradio interface
-├── app\_with\_blocks.py                  # Form-based Gradio interface
-└── README.md
-
-````
+│   └── cleaned_laptops_data.csv       # Cleaned laptop product dataset
+├── faiss_index/                       # Saved FAISS vectorstore
+├── connect_with_llm.py               # Core logic for RAG pipeline and follow-up handling
+├── main_app.py                        # Gradio chatbot interface
+├── README.md                          # This file
+```
 
 ---
 
-## 🚀 Getting Started
+## ⚙️ Setup Instructions
 
-### 1. Clone the Repository
+### 1. Clone the Repo
 
 ```bash
-git clone https://github.com/yourusername/ai-laptop-assistant.git
-cd ai-laptop-assistant
-````
+git clone https://github.com/yourusername/laptop-recommender-ai.git
+cd laptop-recommender-ai
+```
 
 ### 2. Install Dependencies
 
-It's recommended to use a virtual environment.
+Make sure you have Python 3.9+ installed.
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Start Ollama with LLaMA3 Model
+Sample dependencies (put in requirements.txt):
 
-Make sure Ollama is installed and running:
-
-```bash
-ollama run llama3
+```txt
+langchain
+langchain-community
+langchain-core
+langchain-huggingface
+sentence-transformers
+faiss-cpu
+pandas
+gradio
+ollama
 ```
 
-### 4. Prepare Data & Build FAISS Index
+### 3. Download & Prepare Data
 
-Run this once to create the vector index:
+Place your laptop dataset as a CSV in the data/ folder:
+
+* Filename: cleaned\_laptops\_data.csv
+* Columns: should include Product Name, Price, RAM, and key specs as plain text.
+
+### 4. Run the Embedding Pipeline (One-time)
 
 ```bash
 python connect_with_llm.py
 ```
 
-This loads the laptop data, splits documents, generates embeddings, and stores the FAISS index.
+This will:
+
+* Load the dataset
+* Split text into chunks
+* Embed it using HuggingFace embeddings
+* Save a FAISS vector index to disk
 
 ### 5. Launch the App
-
-#### Option A: Chatbot Interface
 
 ```bash
 python main_app.py
 ```
 
-#### Option B: Form-based Interface with Follow-up Support
-
-```bash
-python app_with_blocks.py
-```
-
----
-
-## 💡 Example Queries
-
-* "Best laptops under ₹60000 with 8GB RAM"
-* "Suggest a gaming laptop between ₹70000 and ₹90000"
-* "Above ₹80000 with at least 16GB RAM"
-* Follow-up: "Which one is light and good for travel?"
-
 ---
 
 ## 🧠 How It Works
 
-1. **User Query** → Parsed for keywords like price, RAM
-2. **Retriever** → FAISS fetches relevant laptop entries
-3. **Filter** → Additional filtering applied on price/RAM
-4. **LLM Prompt** → LLaMA3 generates top 5 recommendations
-5. **Follow-up** → Context-aware LLM answers additional questions
+* User submits a query like: “Best laptops under ₹60000 with 8GB RAM”
+* FAISS + Embeddings perform semantic search on laptop documents
+* Filter logic extracts price/RAM constraints from query using regex
+* A LLaMA3 model (via Ollama) is used to generate product responses from context
+* Gradio interface displays results and handles follow-up questions
 
 ---
 
-## ✅ To-Do / Improvements
+## 💬 Example Queries
 
-* ✅ Add price and RAM filtering logic
-* ✅ Implement follow-up question handling
-* ✅ Contextual memory via LangChain
-* 🔄 Add GPU or battery filtering
-* 🔄 Improve UI layout and usability
-* 🔄 Export recommendations as PDF
+* Best laptops under ₹50000
+* I need a gaming laptop with 16GB RAM
+* Which one is better for office work?
+* Any options with Ryzen 7?
+
+---
+
+## ✅ To Do / Improvements
+
+* ✅ Add price and RAM filtering
+* ✅ Enable follow-up Q\&A from user
+* ✅ Clean up duplicate results
+* 🔄 Add GPU filter / storage filtering
+* 🔄 Streamlit integration (optional)
+* 🔄 Add product links or images
+
+---
+
+## 📸 Screenshot
+
+<!-- Add a screenshot of the app UI here if available -->
 
 ---
 
@@ -134,13 +143,18 @@ MIT License
 
 ---
 
-## 🙏 Acknowledgments
+## 🙋‍♂️ Author
 
-* [LangChain](https://github.com/langchain-ai/langchain)
-* [Ollama](https://ollama.com)
-* [Gradio](https://www.gradio.app/)
-* [FAISS](https://github.com/facebookresearch/faiss)
-* [HuggingFace Sentence Transformers](https://www.sbert.net/)
+Krishn Chaudhary
+Pune, India
+🔍 .NET Developer | AI Enthusiast | Open Source Contributor
+
+Feel free to connect with me on [LinkedIn](https://linkedin.com/in/your-profile) or reach out for collaborations!
+
+---
+
+Let me know if you want this in markdown format or want me to generate a downloadable file.
+
 
 ```
 
