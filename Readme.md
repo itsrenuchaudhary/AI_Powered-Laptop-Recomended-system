@@ -1,4 +1,4 @@
-## 💻 AI Laptop Recommendation Assistant
+# 💻 AI Laptop Recommendation Assistant
 
 An intelligent AI-powered assistant that helps users find the best laptops based on their needs, budget, and preferences. This system uses LangChain, FAISS, HuggingFace embeddings, and Ollama (LLaMA3) to deliver contextual, relevant, and personalized recommendations through a Gradio interface.
 
