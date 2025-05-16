@@ -80,24 +80,6 @@ Place your laptop dataset as a CSV in the data/ folder:
 * Filename: cleaned\_laptops\_data.csv
 * Columns: should include Product Name, Price, RAM, and key specs as plain text.
 
-### 4. Run the Embedding Pipeline (One-time)
-
-```bash
-python connect_with_llm.py
-```
-
-This will:
-
-* Load the dataset
-* Split text into chunks
-* Embed it using HuggingFace embeddings
-* Save a FAISS vector index to disk
-
-### 5. Launch the App
-
-```bash
-python main_app.py
-```
 
 ---
 
@@ -118,42 +100,10 @@ python main_app.py
 * Which one is better for office work?
 * Any options with Ryzen 7?
 
----
 
-## ✅ To Do / Improvements
 
-* ✅ Add price and RAM filtering
-* ✅ Enable follow-up Q\&A from user
-* ✅ Clean up duplicate results
-* 🔄 Add GPU filter / storage filtering
-* 🔄 Streamlit integration (optional)
-* 🔄 Add product links or images
 
----
 
-## 📸 Screenshot
-
-<!-- Add a screenshot of the app UI here if available -->
-
----
-
-## 📄 License
-
-MIT License
-
----
-
-## 🙋‍♂️ Author
-
-Krishn Chaudhary
-Pune, India
-🔍 .NET Developer | AI Enthusiast | Open Source Contributor
-
-Feel free to connect with me on [LinkedIn](https://linkedin.com/in/your-profile) or reach out for collaborations!
-
----
-
-Let me know if you want this in markdown format or want me to generate a downloadable file.
 
 
 ```
