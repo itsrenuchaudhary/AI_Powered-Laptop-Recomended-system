@@ -105,10 +105,3 @@ Place your laptop dataset as a CSV in the data/ folder:
 
 
 
-
-```
-
----
-
-Let me know if you'd like a `requirements.txt` or a sample `cleaned_laptops_data.csv` structure added too.
-```
