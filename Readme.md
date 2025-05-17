@@ -4,17 +4,16 @@ An intelligent AI-powered assistant that helps users find the best laptops based
 
 ---
 
-## 🔍 Features
+## 🚀 Features
 
-* Conversational product search for laptops
-* Filters results by price range and RAM from user queries
-* Retrieves laptops using a RAG pipeline (FAISS + LLM)
-* Supports intelligent follow-up questions
-* Keeps conversational memory across interactions
-* Clean and structured product recommendations
-* Available in both standard and chatbot UI (Gradio)
+* 🔍 Intelligent **product search** from Flipkart data
+* 🧠 RAG-based query answering using **FAISS** and **LLM (LLaMA3)**
+* 💬 Conversational follow-up support with **chat history**
+* 🧾 Filters laptops by **price range** and **RAM size**
+* 🖥️ Easy-to-use **Gradio web interface**
 
 ---
+
 
 ## 🧠 Technologies Used
 
@@ -84,22 +83,70 @@ Place your laptop dataset as a CSV in the data/ folder:
 
 ---
 
-## 🧠 How It Works
 
-* User submits a query like: “Best laptops under ₹60000 with 8GB RAM”
-* FAISS + Embeddings perform semantic search on laptop documents
-* Filter logic extracts price/RAM constraints from query using regex
-* A LLaMA3 model (via Ollama) is used to generate product responses from context
-* Gradio interface displays results and handles follow-up questions
+
+
+## 📂 Project Structure
+
+```bash
+├── data/
+│   └── cleaned_laptops_data.csv     # Preprocessed laptop listings
+├── faiss_index/                     # Saved FAISS index
+├── main_app.py                      # Gradio app (chatbot interface)
+├── connect_with_llm.py             # Core logic: retrieval, filtering, LLM invocation
+├── flipkart_scraper.py             # (Optional) Web scraper for Flipkart laptops
+├── requirements.txt
+└── README.md
+```
 
 ---
 
-## 💬 Example Queries
+## 📈 How it Works
 
-* Best laptops under ₹50000
-* I need a gaming laptop with 16GB RAM
-* Which one is better for office work?
-* Any options with Ryzen 7?
+1. **Scrape Flipkart Laptop Data** (optional):
+
+   * Scrape product name, price, description, and rating from Flipkart using BeautifulSoup.
+   * Save it as a CSV.
+
+2. **Vector Index Creation**:
+
+   * Load laptop data using `CSVLoader`.
+   * Split into chunks with `RecursiveCharacterTextSplitter`.
+   * Embed with HuggingFace `MiniLM` and index using FAISS.
+
+3. **User Query Handling**:
+
+   * Parse user query for laptop-related terms, price range, and RAM constraints.
+   * Filter relevant documents from FAISS index.
+   * Use `LLaMA3` via `Ollama` to generate top 5 recommendations based on a structured prompt.
+
+4. **Follow-up Support**:
+
+   * Users can ask contextual follow-ups.
+   * Memory is managed using `ConversationBufferMemory`.
+
+
+
+---
+
+
+
+## ✅ Example Queries
+
+* `"Best laptops under ₹60000 with 16GB RAM"`
+* `"Gaming laptops over ₹70000"`
+* `"I need a laptop for office use under ₹50000"`
+* `"Which one is best for students?"` *(follow-up)*
+
+---
+
+
+## 🧠 Future Improvements
+
+* ✅ Add GPU/Processor filters
+* ✅ Include real-time web scraping updates
+* 🚧 Integrate multi-turn memory with document feedback
+* 🚧 Add image-based comparison view
 
 
 
