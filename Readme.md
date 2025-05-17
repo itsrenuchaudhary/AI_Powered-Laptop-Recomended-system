@@ -1,6 +1,6 @@
 # 💻 AI Laptop Recommendation Assistant
 
-An intelligent AI-powered assistant that helps users find the best laptops based on their needs, budget, and preferences. This system uses LangChain, FAISS, HuggingFace embeddings, and Ollama (LLaMA3) to deliver contextual, relevant, and personalized recommendations through a Gradio interface.
+An intelligent AI-powered assistant that helps users find the best laptops based on their needs, budget, and preferences. This system uses LangChain, FAISS, HuggingFace embeddings, and RAG, Ollama (LLaMA3) to deliver contextual, relevant, and personalized recommendations through a Gradio interface.
 
 ---
 
@@ -22,6 +22,7 @@ An intelligent AI-powered assistant that helps users find the best laptops based
 * LangChain (chains, retrievers, memory, etc.)
 * HuggingFace Embeddings (`sentence-transformers/all-MiniLM-L6-v2`)
 * FAISS (vector database for semantic search)
+* RAG (Retrive data)
 * Ollama (serving LLaMA3 locally)
 * Gradio (UI interface)
 * Pandas (for CSV processing)
